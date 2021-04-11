@@ -1,10 +1,10 @@
 {
-  "author": "Francisco Jesus Navarro Cortes<spieljs@gmail.com>",
+  "author": "Zakkary Verrilli<zverrilli@protonmail.com>",
   "repository": {
-    "url": "https://github.com/spielrs/yew-parcel-template"
+    "url": "https://github.com/ZakkaryV/yew-json-formatter"
   },
   "name": "create-yew-parcel",
-  "version": "0.17.5",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "start": "node wasm-builder.js",
@@ -26,7 +26,6 @@
     "typescript": "^3.9.7",
     "yew-styles": "0.8.1"
   },
-  "dependencies": {},
   "staticFiles": {
     "staticPath": [
       "./crate/pkg",

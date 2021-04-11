@@ -1,11 +1,11 @@
 [package]
-authors = ["Francisco Jesus Navarro Cortes"]
+authors = ["Zakkary Verrilli"]
 categories = ["wasm"]
 description = "My awesome Yew with Yew-Router and Parcel application!"
 license = "MIT"
 name = "yew-parcel"
 readme = "./README.md"
-repository = "https://github.com/spielrs/yew-parcel-template.git"
+repository = "https://github.com/ZakkaryV/yew-json-formatter"
 version = "0.17.2"
 
 [lib]

@@ -1,124 +1,39 @@
-# Yew Parcel Template
+# What is this
+A JSON viewer / formatter with collapsible nesting. 
 
-<div align="center">
-    <p>
-        <a href="https://discord.gg/ZHWmUaf" target="_blank"><img alt="Discord Chat" src="https://img.shields.io/badge/Discor-Spielrs%20-yellowgreen"/></a>
-        <a href="https://github.com/spielrs/yew-parcel-template/blob/master/LICENSE" target="_blank"><img alt="License" src="https://img.shields.io/badge/License-MIT%20-lightgrey"></a>
-        <a href="https://paypal.me/dancespiele?locale.x=en_US" target="_blank"><img alt="Donate by Paypal" src="https://img.shields.io/badge/Donate-PayPal-green.svg"/></a>
-    </p>
-</div>
+# Goals
+1. Explore the recreation of classic UI component with novel technologies and measure their viability for production scenarios
+2. Draw comparisons to app development with more popular, accessible technologies (react, typescript etc)
+  a. Development speed
+  b. Technical complexity
+  c. Necessity to rely on open-source modules (as opposed to built-in abstractions)
+  d. App performance: WASM DOM interop VS Native JS
 
-**Kickstart your Yew, Yew-Router, WebAssembly, and Parcel project!**
+# ~~Conclusion~~
 
-This template comes pre-configured with all the boilerplate for compiling [Yew framework](https://yew.rs/docs/en/intro/) and [Yew Router](https://yew.rs/docs/en/concepts/router/)
-to WebAssembly and hooking into a [Parcel build pipeline](https://parceljs.org/).
+# Technologies employed
+* Rust
+  * [rustup](https://rustup.rs/)
+  * [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)
+* [Yew](https://yew.rs/docs/en/)
+  * "Yew is a modern Rust framework for creating multi-threaded front-end web apps with WebAssembly"
+* [wasm-pack](https://rustwasm.github.io/wasm-pack/book/)
+* [Parcel](https://parceljs.org/getting_started.html)
+  * javascript bundler
 
-* `npm start` -- Serve the project locally for
-  development at `http://localhost:1234` by default.
+# Build this app from scratch
+1. Update to latest rust toolchain
+  `rustup toolchain install stable`
+2. Install "wasm-pack" binary [globally]
+  `curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh`
+3. Initialize [this] repo
+  `npm init yew-parcel <repo-name>`
+4. Install deps
+  `cd <repo-name> && npm i`
+5. Run dev server
+  `npm start`
+6. Navigate to http://localhost:1234
 
-* `npm build` -- Serve the project in production mode (gzip compression and high level wasm optimization)
-
-## Using This Template
-
-```sh
-cargo install wasm-pack
-```
-
-```sh
-npm init yew-parcel my-app
-```
-
-```sh
-npm install
-```
-
-## Configuration
-
-You will want to change the name of your crate however also you need to change the import js file name that generate the wasm pack in the index.html
-with the new name of your crate
-
-```javascript
-  <script type="module">
-    import init, { run } from './name_of_your_crate.js';
-
-    const start = async() => {
-      await init('./name_of_your_crate_bg.wasm');
-      run();
-    };
-
-    start();
-  </script>
-```
-
-You maybe want that parcel watch more than everything call by `index.html`, and the `src` and `Cargo.toml` of the crate, you need to add the path in the watcher of `wasm-builder`:
-
-```javascript
-    chokidar.watch(['./crate/src', './crate/Cargo.toml', './crate/your_new_path_to_watch']).on('change', async (event, path) => {
-        console.log(`there are new changes in '${path}'. Start to rebuild rustwasm sources`);
-
-        bundler.bundle();
-
-        bundler.hmr.broadcast({
-            type: 'reload'
-        });
-    });
-```
-
-You can also change the address of the parcel server adding a .env file with the next setting:
-
-```sh
-SERVER_ADDRESS=[YOUR_ADDRESS]:[YOUR_PORT]
-```
-
-In case that you want to customize the wasm-pack build you will find it in `wasm_pack_cmd` sh. For powerShell you will need to write your own script
-and change the name of execution file in `wasm-builder.js`:
-
-```javascript
-    bundler.on('buildStart', () => {
-        const prevtBuildFile = Path.join(__dirname, './your_script.ps1');
-        console.log(`running: ${prevtBuildFile}`);
-        execSync(`${prevtBuildFile} ${buildType === 'production' ? '' : '--dev'}`, {stdio: 'inherit'});
-    });
-
-```
-
-For static files you need to include in the `package.json`:
-
-```json
-"staticFiles": {
-  "staticPath": ["./crate/pkg", "./crate/your_static_folder"],
-  "watcherGlob": false
-}
-```
-
-The static directory has to be included in some subfolder, not in the root path or it will be ignored. The bundle move the content of the directory
-into the `dist` not the directory itself
-
-## Limitations
-If the server is closed while pages are still serving and after it is running again, the browser will not synchronize again with the server until
-you refresh the pages manually.
-
-## Do you like Yew Parcel Template?
-If you like Yew Parcel Template, help us supporting the project:
-- Sending coins to the address **0x619d3FA3bD7CF497d9899Ccd4d7b5663Ff318e52**
-- BAT rewards in case that you use [Brave Browser](https://brave.com/)
-- [Github Sponsors](https://github.com/sponsors/dancespiele)
-- Burst coins to the address BURST-DPN6-2AT3-FCRL-9BBKG
-
-
-## Rustc Version Required
-
-- 1.40.0 or higher
-
-## Attention
-
-- if you don't want `web_sys`, change the feature of `yew` and `yew_router` to `std_web` in cargo.toml file and remove in your cargo config file:
-
-```toml
-[build]
-target="wasm32-unknown-unknown"
-```
-
-### License
-
-Yew Parcel Template is MIT licensed. See [license](LICENSE)
+# Reference materials
+1. https://habd.as/post/getting-started-yew-rust/
+2. https://jsonformatter.org/
