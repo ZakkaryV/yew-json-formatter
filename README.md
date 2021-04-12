@@ -37,3 +37,8 @@ A JSON viewer / formatter with collapsible nesting.
 # Reference materials
 1. https://habd.as/post/getting-started-yew-rust/
 2. https://jsonformatter.org/
+
+# Credits
+Thanks [dancespiele](https://github.com/dancespiele) for this awesome [Yew Parcel Template](https://github.com/dancespiele/yew-parcel-template)!
+
+Thanks [habd.as](https://habd.as/) for publishing [Getting Started with Yew for Rust](https://habd.as/post/getting-started-yew-rust/)!
